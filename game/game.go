@@ -19,13 +19,15 @@ func NewGame(gameScreen *screen.Screen) {
 		return
 	}
 
+	initialField.SetPlain('🌕')
+
 	gameScreen.SetField(initialField)
 
 	for {
 		w := rand.Intn(width)
 		h := rand.Intn(height)
-		initialField[h][w] = '🌗'
-			gameScreen.SetField(initialField)
+		initialField[h][w] = '🌑'
+		gameScreen.SetField(initialField)
 		gameScreen.RenderFrame()
 	}
 }
