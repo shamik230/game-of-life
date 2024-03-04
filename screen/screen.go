@@ -33,7 +33,7 @@ func (s *Screen) SetLatencyMs(ms int) {
 
 func (s *Screen) RenderFrame() {
 	fmt.Print("\033[H\033[2J")
-	for _, v := range s.field {
+	for _, v := range s.field { 
 		fmt.Println(string(v))
 	}
 	time.Sleep(s.latency)
@@ -54,4 +54,12 @@ func (s *Screen) SetField(f Field) {
 			s.field[h][w] = f[h][w]
 		}
 	}
+}
+
+func (s *Screen) GetWidth() int {
+	return s.width
+}
+
+func (s *Screen) GetHeight() int {
+	return s.height
 }
