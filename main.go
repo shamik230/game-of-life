@@ -1,7 +1,27 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/shamik230/game-of-life/game"
+	"github.com/shamik230/game-of-life/screen"
+)
 
 func main() {
-	fmt.Println("Hello World")
+	const (
+		Width = 16
+		Height = 9
+	)
+	gameScreen, err := screen.NewScreen(Width, Height);
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+	
+	game.NewGame(gameScreen)
+	// game.setField(someField)
+	// game.Pause()
+	// game.Unpause()
+	// game.Speed(2.5)
+	// game.Start()
 }

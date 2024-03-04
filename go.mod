@@ -1,3 +1,3 @@
-module github.com/shamik230/wb_l0
+module github.com/shamik230/game-of-life
 
 go 1.22.0
