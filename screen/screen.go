@@ -28,6 +28,9 @@ func NewScreen(width int, height int) (*Screen, error) {
 }
 
 func (s *Screen) SetLatencyMs(ms int) {
+	if ms < 0 {
+		ms = 0
+	}
 	s.latency = time.Millisecond * time.Duration(ms);
 }
 
@@ -36,7 +39,9 @@ func (s *Screen) RenderFrame() {
 	for _, v := range s.field { 
 		fmt.Println(string(v))
 	}
-	time.Sleep(s.latency)
+	if s.latency > 0 {
+		time.Sleep(s.latency)
+	}
 }
 
 func (s *Screen) SetField(f Field) {

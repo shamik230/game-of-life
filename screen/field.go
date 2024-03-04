@@ -14,7 +14,7 @@ func NewField(width int, height int) (Field, error) {
 	for i := range result {
 		result[i] = make([]rune, width)
 		for j := range result[i] {
-            result[i][j] = '🌕'
+            result[i][j] = '🌕' // Инициализация каждого элемента пробелом
         }
 	}
 

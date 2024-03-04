@@ -8,7 +8,6 @@ import (
 )
 
 func NewGame(gameScreen *screen.Screen) {
-
 	var (
 		width  = gameScreen.GetWidth()
 		height = gameScreen.GetHeight()
@@ -25,7 +24,7 @@ func NewGame(gameScreen *screen.Screen) {
 	for {
 		w := rand.Intn(width)
 		h := rand.Intn(height)
-		initialField[h][w] = '🌑'
+		initialField[h][w] = '🌗'
 			gameScreen.SetField(initialField)
 		gameScreen.RenderFrame()
 	}
