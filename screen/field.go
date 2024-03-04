@@ -1,6 +1,9 @@
 package screen
 
-import "errors"
+import (
+	"errors"
+	"math/rand"
+)
 
 type Field [][]rune
 
@@ -22,6 +25,17 @@ func (f Field) SetPlain(char rune) {
 	for i := range f {
 		for j := range f[i] {
 			f[i][j] = char
+		}
+	}
+}
+
+func (f Field) SetRandomWith(chars []rune) {
+	var index int
+	
+	for i := range f {
+		for j := range f[i] {
+			index = rand.Intn(len(chars))
+			f[i][j] = chars[index]
 		}
 	}
 }

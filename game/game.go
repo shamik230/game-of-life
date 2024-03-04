@@ -2,12 +2,13 @@ package game
 
 import (
 	"fmt"
-	"math/rand"
 
 	"github.com/shamik230/game-of-life/screen"
 )
 
 func NewGame(gameScreen *screen.Screen) {
+	gameScreen.SetLatencyMs(100)
+
 	var (
 		width  = gameScreen.GetWidth()
 		height = gameScreen.GetHeight()
@@ -19,14 +20,10 @@ func NewGame(gameScreen *screen.Screen) {
 		return
 	}
 
-	initialField.SetPlain('🌕')
-
 	gameScreen.SetField(initialField)
 
 	for {
-		w := rand.Intn(width)
-		h := rand.Intn(height)
-		initialField[h][w] = '🌑'
+		initialField.SetRandomWith([]rune("🟠🟡🟢🟣🟤⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪"))
 		gameScreen.SetField(initialField)
 		gameScreen.RenderFrame()
 	}
