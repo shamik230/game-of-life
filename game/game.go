@@ -13,8 +13,8 @@ type gameField struct {
 }
 
 const (
-	OFF = '🌕'
-	ON  = '🌑'
+	OFF = '⬜'
+	ON  = '⬛'
 )
 
 func NewGame(gameScreen *screen.Screen) {
