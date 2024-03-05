@@ -9,15 +9,14 @@ import (
 
 func main() {
 	const (
-		Width = 72
-		Height = 18
+		Width = 80
+		Height = 40
 	)
 	gameScreen, err := screen.NewScreen(Width, Height);
 	if err != nil {
 		fmt.Println(err.Error())
 		return
 	}
-	gameScreen.SetLatencyMs(10)
 	game.NewGame(gameScreen)
 	// game.setField(someField)
 	// game.Pause()

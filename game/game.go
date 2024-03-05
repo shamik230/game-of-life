@@ -3,7 +3,7 @@ package game
 import (
 	"fmt"
 	"math"
-	
+
 	"github.com/shamik230/game-of-life/screen"
 )
 
@@ -11,6 +11,11 @@ type gameField struct {
 	prev screen.Field
 	next screen.Field
 }
+
+const (
+	OFF = '🌕'
+	ON  = '🌑'
+)
 
 func NewGame(gameScreen *screen.Screen) {
 	var (
@@ -25,7 +30,7 @@ func NewGame(gameScreen *screen.Screen) {
 		return
 	}
 
-	gameField.next.SetRandomWith([]rune("       1"))
+	gameField.next.SetRandomWith([]rune("🌕🌕🌕🌕🌑")) // wtf
 
 	for {
 		gameScreen.SetField(gameField.next)
@@ -53,20 +58,21 @@ func newGameField(width int, height int) (*gameField, error) {
 
 func (f *gameField) evalNextFrame() {
 	f.prev, f.next = f.next, f.prev
+
 	for i := range f.prev {
 		for j := range f.prev[i] {
 			count := countNeighbors(f.prev, i, j)
-			if f.prev[i][j] == ' ' {
+			if f.prev[i][j] == OFF {
 				if count == 3 {
-					f.next[i][j] = '1'
+					f.next[i][j] = ON
 				} else {
-					f.next[i][j] = ' '
+					f.next[i][j] = OFF
 				}
 			} else {
 				if count == 2 || count == 3 {
-					f.next[i][j] = '1'
+					f.next[i][j] = ON
 				} else {
-					f.next[i][j] = ' '
+					f.next[i][j] = OFF
 				}
 			}
 		}
@@ -75,7 +81,7 @@ func (f *gameField) evalNextFrame() {
 
 func modulo(x, base int) int {
 	y := math.Floor(float64(x) / float64(base))
-	return x - int(y) * base
+	return x - int(y)*base
 }
 
 func countNeighbors(f screen.Field, i, j int) (count int) {
@@ -83,23 +89,19 @@ func countNeighbors(f screen.Field, i, j int) (count int) {
 		I int
 		J int
 	)
-
 	for h := -1; h <= 1; h++ {
 		for w := -1; w <= 1; w++ {
-
 			if h == 0 && w == 0 {
 				continue
 			}
 
-			I = modulo(i + h, len(f))
-			J = modulo(j + w, len(f[0]))
+			I = modulo(i+h, len(f))
+			J = modulo(j+w, len(f[0]))
 
-			if f[I][J] == '1' {
+			if f[I][J] == ON {
 				count++
 			}
-
 		}
 	}
-
 	return
 }
