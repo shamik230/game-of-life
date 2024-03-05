@@ -14,7 +14,6 @@ type Screen struct {
 
 func NewScreen(width int, height int) (*Screen, error) {
 	field, err := NewField(width, height)
-	
 	if err != nil {
 		return nil, err
 	}
@@ -36,9 +35,11 @@ func (s *Screen) SetLatencyMs(ms int) {
 
 func (s *Screen) RenderFrame() {
 	fmt.Print("\033[H\033[2J")
+
 	for _, v := range s.field { 
 		fmt.Println(string(v))
 	}
+
 	if s.latency > 0 {
 		time.Sleep(s.latency)
 	}
@@ -48,6 +49,7 @@ func (s *Screen) SetField(f Field) {
 	if f == nil {
 		return
 	}
+	
 	for h := 0; h < s.height; h++ {
 		if h > len(f) - 1 {
 			break

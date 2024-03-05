@@ -11,13 +11,11 @@ func NewField(width int, height int) (Field, error) {
 	if width <= 0 || height <= 0 {
 		return nil, errors.New("width and height must be positive values")
 	}
-
+	
 	result := make(Field, height)
-
 	for i := range result {
 		result[i] = make([]rune, width)
 	}
-
 	return result, nil
 }
 
@@ -35,7 +33,6 @@ func (f Field) SetRandomWith(chars []rune) {
 	}
 
 	var index int
-	
 	for i := range f {
 		for j := range f[i] {
 			index = rand.Intn(len(chars))

@@ -9,14 +9,16 @@ import (
 
 func main() {
 	const (
-		Width = 40
+		Width  = 40
 		Height = 20
 	)
-	gameScreen, err := screen.NewScreen(Width, Height);
+	
+	gameScreen, err := screen.NewScreen(Width, Height)
 	if err != nil {
 		fmt.Println(err.Error())
 		return
 	}
+
 	game.NewGame(gameScreen)
 }
 
