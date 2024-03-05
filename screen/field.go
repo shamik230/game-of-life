@@ -30,6 +30,10 @@ func (f Field) SetPlain(char rune) {
 }
 
 func (f Field) SetRandomWith(chars []rune) {
+	if len(chars) == 0 {
+		return
+	}
+
 	var index int
 	
 	for i := range f {

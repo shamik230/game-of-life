@@ -23,7 +23,7 @@ func NewScreen(width int, height int) (*Screen, error) {
 		width: width,
 		height: height,
 		field: field,
-		latency: time.Millisecond * 50,
+		latency: time.Millisecond * 100,
 	}, nil
 }
 
