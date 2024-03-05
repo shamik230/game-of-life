@@ -1,3 +1,4 @@
 ### Usage 
-To run simply do:
+## To run simply do
+
 $ go run main.go

@@ -30,7 +30,7 @@ func NewGame(gameScreen *screen.Screen) {
 		return
 	}
 
-	gameField.next.SetRandomWith([]rune("🌕🌕🌕🌕🌑")) // wtf
+	gameField.next.SetRandomWith([]rune{OFF, OFF, OFF, OFF, ON}) // initial field
 
 	for {
 		gameScreen.SetField(gameField.next)

@@ -9,8 +9,8 @@ import (
 
 func main() {
 	const (
-		Width = 80
-		Height = 40
+		Width = 40
+		Height = 20
 	)
 	gameScreen, err := screen.NewScreen(Width, Height);
 	if err != nil {
@@ -18,9 +18,11 @@ func main() {
 		return
 	}
 	game.NewGame(gameScreen)
-	// game.setField(someField)
-	// game.Pause()
-	// game.Unpause()
-	// game.Speed(2.5)
-	// game.Start()
 }
+
+// TODO
+// game.setField(someField)
+// game.Pause()
+// game.Unpause()
+// game.Speed(2.5)
+// game.Start()
