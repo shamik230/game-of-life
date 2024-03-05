@@ -17,7 +17,7 @@ func main() {
 		fmt.Println(err.Error())
 		return
 	}
-	
+	gameScreen.SetLatencyMs(10)
 	game.NewGame(gameScreen)
 	// game.setField(someField)
 	// game.Pause()

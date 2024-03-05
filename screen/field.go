@@ -8,8 +8,8 @@ import (
 type Field [][]rune
 
 func NewField(width int, height int) (Field, error) {
-	if width < 0 || height < 0 {
-		return nil, errors.New("width and height must be non-negative values")
+	if width <= 0 || height <= 0 {
+		return nil, errors.New("width and height must be positive values")
 	}
 
 	result := make(Field, height)
